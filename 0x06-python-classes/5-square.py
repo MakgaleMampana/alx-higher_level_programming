@@ -1,31 +1,35 @@
 #!/usr/bin/python3
+"""Python script that creates a class and functions for the class"""
+
+
 class Square:
+    """Class that defines a square with a private instance attribute size"""
+
     def __init__(self, size=0):
         self.__size = size
 
-    # Property
     @property
     def size(self):
+        """Getter and setter used to validate type and value of size"""
         return self.__size
 
-    # Setter modifies
     @size.setter
     def size(self, value):
-        if type(value) != int:
-            raise TypeError('size must be an integer')
-        elif value < 0:
-            raise ValueError('size must be >= 0')
+        if isinstance(value, int):
+            if value >= 0:
+                self.__size = value
+            else:
+                raise ValueError('size must be >= 0')
         else:
-            self.__size = value
+            raise TypeError('size must be an integer')
 
     def area(self):
-        return self.__size ** 2
+        """Returns the area of the square"""
+        return int(self.__size) * int(self.__size)
 
     def my_print(self):
-        size = self.__size
-
-        if size == 0:
-            print()
-
-        for row in range(size):
-            print('#' * size)
+        """Prints a square using '#'"""
+        if self.size == 0:
+            print("")
+        for i in range(self.size):
+            print('#' * self.size)

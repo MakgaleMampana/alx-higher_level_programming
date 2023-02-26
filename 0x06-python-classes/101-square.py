@@ -1,13 +1,17 @@
 #!/usr/bin/python3
+"""Python script that creates a class and functions for the class"""
+
+
 class Square:
-  
+    """Class that defines a square with a private instance attribute size"""
+
     def __init__(self, size=0, position=(0, 0)):
         self.size = size
         self.position = position
 
     @property
     def size(self):
-        
+        """Getter and setter used to validate type and value of size"""
         return self.__size
 
     @size.setter
@@ -22,7 +26,7 @@ class Square:
 
     @property
     def position(self):
-        
+        """Getter and setter used to validate type and value of position"""
         return self.__position
 
     @position.setter
@@ -36,11 +40,11 @@ class Square:
             raise TypeError(err)
 
     def area(self):
-        
+        """Returns the area of the square"""
         return int(self.__size) * int(self.__size)
 
     def my_print(self):
-        
+        """Prints a square using '#'"""
         for j in range(self.__position[1]):
             print("")
         if self.size == 0:
